@@ -1,0 +1,165 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Spin",
+	"patterns": [
+		{ "include": "#comment" },
+		{ "include": "#block" },
+		{ "include": "#constant" },
+		{ "include": "#directive" },
+		{ "include": "#keyword" },
+		{ "include": "#register" }
+	],
+	"repository": {
+		"block": {
+			"patterns": [
+				{
+					"name": "meta.block.con.spin",
+					"match": "^CON\\b",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "keyword.spin",
+									"match": "CON"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "meta.block.var.spin",
+					"match": "^VAR\\b",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "keyword.spin",
+									"match": "VAR"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "meta.block.obj.spin",
+					"match": "^OBJ\\b",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "keyword.spin",
+									"match": "OBJ"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "meta.block.pub.spin",
+					"match": "^PUB\\b",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "keyword.spin",
+									"match": "PUB"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "meta.block.pri.spin",
+					"match": "^PRI\\b",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "keyword.spin",
+									"match": "PRI"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "meta.block.dat.spin",
+					"match": "^DAT\\b",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"name": "keyword.spin",
+									"match": "DAT"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "invalid.illegal.spin",
+					"match": "^\\s+(CON|VAR|OBJ|PUB|PRI|DAT)\\b"
+				}
+			]
+		},
+		"comment": {
+			"patterns": [
+				{
+					"name": "comment.block.documentation.spin",
+					"match": "''.*"
+				},
+				{
+					"name": "comment.line.spin",
+					"match": "'.*"
+				},
+				{
+					"name": "comment.block.documentation.spin",
+					"begin": "{{",
+					"end": "}}"
+				},
+				{
+					"name": "comment.block.spin",
+					"begin": "{",
+					"end": "}"
+				}
+			]
+		},
+		"constant": {
+			"patterns": [
+				{
+					"name": "constant.language.spin",
+					"match": "\\b(TRUE|FALSE|POSX|NEGX|PI)\\b"
+				}
+			]
+		},
+		"directive": {
+			"patterns": [
+				{
+					"name": "keyword.control.directive.spin",
+					"match": "\\b(STRING|CONSTANT|FLOAT|ROUND|TRUNC|FILE)\\b"
+				}
+			]
+		},
+		"keyword": {
+			"patterns": [
+				{
+					"name": "keyword.control.process.spin",
+					"match": "\\b(LOCK(NEW|RET|CLR|SET)|WAIT(CNT|PEQ|PNE|VID))\\b"
+				},
+				{
+					"name": "keyword.control.flow.spin",
+					"match": "\\b(IF|ELSEIF|ELSEIFNOT|ELSE|IFNOT|CASE|OTHER|REPEAT|FROM|TO|STEP|UNIT|WHILE|NEXT|QUIT|RETURN|ABORT)\\b"
+				}
+			]
+		},
+		"register": {
+			"patterns": [
+				{
+					"name": "variable.language.spin",
+					"match": "\\b(DIR(A|B)|IN(A|B)|OUT(A|B)|CNT|CTR(A|B)|FRQ(A|B)|PHS(A|B)|VCFG|VSCL|PAR|SPR)\\b"
+				}
+			]
+		}
+	},
+	"scopeName": "source.spin"
+}
