@@ -4,23 +4,26 @@
 	"patterns": [
 		{ "include": "#comment" },
 		{ "include": "#block" },
+		{ "include": "#configuration" },
 		{ "include": "#constant" },
+		{ "include": "#control" },
 		{ "include": "#directive" },
-		{ "include": "#keyword" },
-		{ "include": "#register" }
+		{ "include": "#operator" },
+		{ "include": "#register" },
+		{ "include": "#value" }
 	],
 	"repository": {
 		"block": {
 			"patterns": [
 				{
 					"name": "meta.block.con.spin",
-					"match": "^CON\\b",
+					"match": "(?i)^CON\\b",
 					"captures": {
 						"0": {
 							"patterns": [
 								{
 									"name": "keyword.spin",
-									"match": "CON"
+									"match": "(?i)CON"
 								}
 							]
 						}
@@ -28,13 +31,13 @@
 				},
 				{
 					"name": "meta.block.var.spin",
-					"match": "^VAR\\b",
+					"match": "(?i)^VAR\\b",
 					"captures": {
 						"0": {
 							"patterns": [
 								{
 									"name": "keyword.spin",
-									"match": "VAR"
+									"match": "(?i)VAR"
 								}
 							]
 						}
@@ -42,13 +45,13 @@
 				},
 				{
 					"name": "meta.block.obj.spin",
-					"match": "^OBJ\\b",
+					"match": "(?i)^OBJ\\b",
 					"captures": {
 						"0": {
 							"patterns": [
 								{
 									"name": "keyword.spin",
-									"match": "OBJ"
+									"match": "(?i)OBJ"
 								}
 							]
 						}
@@ -56,13 +59,13 @@
 				},
 				{
 					"name": "meta.block.pub.spin",
-					"match": "^PUB\\b",
+					"match": "(?i)^PUB\\b",
 					"captures": {
 						"0": {
 							"patterns": [
 								{
 									"name": "keyword.spin",
-									"match": "PUB"
+									"match": "(?i)PUB"
 								}
 							]
 						}
@@ -70,13 +73,13 @@
 				},
 				{
 					"name": "meta.block.pri.spin",
-					"match": "^PRI\\b",
+					"match": "(?i)^PRI\\b",
 					"captures": {
 						"0": {
 							"patterns": [
 								{
 									"name": "keyword.spin",
-									"match": "PRI"
+									"match": "(?i)PRI"
 								}
 							]
 						}
@@ -84,13 +87,13 @@
 				},
 				{
 					"name": "meta.block.dat.spin",
-					"match": "^DAT\\b",
+					"match": "(?i)^DAT\\b",
 					"captures": {
 						"0": {
 							"patterns": [
 								{
 									"name": "keyword.spin",
-									"match": "DAT"
+									"match": "(?i)DAT"
 								}
 							]
 						}
@@ -98,7 +101,7 @@
 				},
 				{
 					"name": "invalid.illegal.spin",
-					"match": "^\\s+(CON|VAR|OBJ|PUB|PRI|DAT)\\b"
+					"match": "(?i)^\\s+(CON|VAR|OBJ|PUB|PRI|DAT)\\b"
 				}
 			]
 		},
@@ -124,11 +127,35 @@
 				}
 			]
 		},
+		"configuration": {
+			"patterns": [
+				{
+					"name": "keyword.other.configuration.spin",
+					"match": "(?i)\\b(CHIPVER|CLKMODE|_CLKMODE|CLKFREQ|_CLKFREQ|CLKSET|_XINFREQ|_STACK|_FREE|RCFAST|RCSLOW|XINPUT|XTAL1|XTAL2|XTAL3|PLL(1|2|4|8|16)X)\\b"
+				}
+			]
+		},
 		"constant": {
 			"patterns": [
 				{
 					"name": "constant.language.spin",
-					"match": "\\b(TRUE|FALSE|POSX|NEGX|PI)\\b"
+					"match": "(?i)\\b(TRUE|FALSE|POSX|NEGX|PI)\\b"
+				}
+			]
+		},
+		"control": {
+			"patterns": [
+				{
+					"name": "keyword.control.cog.spin",
+					"match": "(?i)\\b(COGID|COGNEW|COGINIT|COPGSTOP|REBOOT)\\b"
+				},
+				{
+					"name": "keyword.control.process.spin",
+					"match": "(?i)\\b(LOCKNEW|LOCKRET|LOCKCLR|LOCKSET|WAITCNT|WAITPEQ|WAITPNE|WAITVID)\\b"
+				},
+				{
+					"name": "keyword.control.flow.spin",
+					"match": "(?i)\\b(IF|ELSEIF|ELSEIFNOT|ELSE|IFNOT|CASE|OTHER|REPEAT|FROM|TO|STEP|UNIT|WHILE|NEXT|QUIT|RETURN|ABORT)\\b"
 				}
 			]
 		},
@@ -136,19 +163,19 @@
 			"patterns": [
 				{
 					"name": "keyword.control.directive.spin",
-					"match": "\\b(STRING|CONSTANT|FLOAT|ROUND|TRUNC|FILE)\\b"
+					"match": "(?i)\\b(STRING|CONSTANT|FLOAT|ROUND|TRUNC|FILE)\\b"
 				}
 			]
 		},
-		"keyword": {
+		"operator": {
 			"patterns": [
 				{
-					"name": "keyword.control.process.spin",
-					"match": "\\b(LOCK(NEW|RET|CLR|SET)|WAIT(CNT|PEQ|PNE|VID))\\b"
+					"name": "keyword.operator.binary.spin",
+					"match": "(?i)(=|:=|\\+=?|\\-=?)"
 				},
 				{
-					"name": "keyword.control.flow.spin",
-					"match": "\\b(IF|ELSEIF|ELSEIFNOT|ELSE|IFNOT|CASE|OTHER|REPEAT|FROM|TO|STEP|UNIT|WHILE|NEXT|QUIT|RETURN|ABORT)\\b"
+					"name": "keyword.operator.unary.spin",
+					"match": "(?i)(\\+\\+?|\\-\\-?|\\^\\^|\\|\\||~~?|\\?|\\|<|>\\||!|NOT|@@?)"
 				}
 			]
 		},
@@ -156,7 +183,20 @@
 			"patterns": [
 				{
 					"name": "variable.language.spin",
-					"match": "\\b(DIR(A|B)|IN(A|B)|OUT(A|B)|CNT|CTR(A|B)|FRQ(A|B)|PHS(A|B)|VCFG|VSCL|PAR|SPR)\\b"
+					"match": "(?i)\\b(DIR(A|B)|IN(A|B)|OUT(A|B)|CNT|CTR(A|B)|FRQ(A|B)|PHS(A|B)|VCFG|VSCL|PAR|SPR)\\b"
+				}
+			]
+		},
+		"value": {
+			"patterns": [
+				{
+					"name": "string.quoted.double.spin",
+					"begin": "\"",
+					"end": "\""
+				},
+				{
+					"name": "constant.numeric.spin",
+					"match": "[0-9]"
 				}
 			]
 		}

@@ -1,56 +1,56 @@
 {
-	"name": "spin",
-	"displayName": "Spin",
-	"description": "Spin language support",
-	"version": "0.0.0",
-	"publisher": "Entomy",
-	"author": "Entomy",
-	"galleryBanner": {
-		"color": "#F0F000",
-		"theme": "dark"
-	},
-	"preview": true,
-	"keywords": [
-		"spin",
-		"propeller",
-		"parallax"
-	],
-	"license": "LICENSE",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/Entomy/Spin-vscode"
-	},
-	"bugs": {
-		"url": "https://github.com/Entomy/Spin-vscode/issues",
-		"email": "p-kell@live.com"
-	},
-	"engines": {
-		"vscode": "^1.19.0"
-	},
-	"categories": [
-		"Languages"
-	],
-	"contributes": {
-		"grammars": [
-			{
-				"language": "spin",
-				"scopeName": "source.spin",
-				"path": "./syntaxes/spin.tmLanguage.json"
-			}
-		],
-		"languages": [
-			{
-				"id": "spin",
-				"aliases": [
-					"spin",
-					"Spin",
-					"SPIN"
-				],
-				"extensions": [
-					".spin"
-				],
-				"configuration": "./spin.json"
-			}
-		]
-	}
+    "name": "spin",
+    "displayName": "Spin",
+    "description": "Spin language support",
+    "version": "0.1.0",
+    "publisher": "Entomy",
+    "author": "Entomy",
+    "galleryBanner": {
+        "color": "#F0F000",
+        "theme": "dark"
+    },
+    "preview": true,
+    "keywords": [
+        "spin",
+        "propeller",
+        "parallax"
+    ],
+    "license": "LICENSE",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Entomy/Spin-vscode"
+    },
+    "bugs": {
+        "url": "https://github.com/Entomy/Spin-vscode/issues",
+        "email": "p-kell@live.com"
+    },
+    "engines": {
+        "vscode": "^1.19.0"
+    },
+    "categories": [
+        "Languages"
+    ],
+    "contributes": {
+        "grammars": [
+            {
+                "language": "spin",
+                "scopeName": "source.spin",
+                "path": "./syntaxes/spin.tmLanguage.json"
+            }
+        ],
+        "languages": [
+            {
+                "id": "spin",
+                "aliases": [
+                    "spin",
+                    "Spin",
+                    "SPIN"
+                ],
+                "extensions": [
+                    ".spin"
+                ],
+                "configuration": "./spin.json"
+            }
+        ]
+    }
 }
