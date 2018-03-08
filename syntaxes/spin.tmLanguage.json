@@ -8,6 +8,7 @@
 		{ "include": "#constant" },
 		{ "include": "#control" },
 		{ "include": "#directive" },
+		{ "include": "#memory" },
 		{ "include": "#operator" },
 		{ "include": "#register" },
 		{ "include": "#value" }
@@ -167,11 +168,19 @@
 				}
 			]
 		},
+		"memory": {
+			"patterns": [
+				{
+					"name": "storage.type.spin",
+					"match": "(?i)\\b(BYTE|WORD|LONG)\\b"
+				}
+			]
+		},
 		"operator": {
 			"patterns": [
 				{
 					"name": "keyword.operator.binary.spin",
-					"match": "(?i)(=|:=|\\+=?|\\-=?)"
+					"match": "(?i)(=|:=|\\+=?|\\-=?|\\*\\*?=?|//?=?|#>=?|<#=?|~>=?|<<=?|>>=?|<-=?|->=?|><=?|\\&=?)"
 				},
 				{
 					"name": "keyword.operator.unary.spin",
@@ -195,8 +204,12 @@
 					"end": "\""
 				},
 				{
-					"name": "constant.numeric.spin",
-					"match": "[0-9]"
+					"name": "constant.numeric.decimal.spin",
+					"match": "[0-9_]+"
+				},
+				{
+					"name": "constant.numeric.hexadecimal.spin",
+					"match": "\\$[0-9A-F_]+"
 				}
 			]
 		}

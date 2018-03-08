@@ -2,7 +2,7 @@
     "name": "spin",
     "displayName": "Spin",
     "description": "Spin language support",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "publisher": "Entomy",
     "author": "Entomy",
     "galleryBanner": {
@@ -49,7 +49,7 @@
                 "extensions": [
                     ".spin"
                 ],
-                "configuration": "./spin.json"
+                "configuration": "./spin.language.json"
             }
         ]
     }
