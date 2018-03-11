@@ -2,7 +2,8 @@
     "name": "spin",
     "displayName": "Spin",
     "description": "Spin language support",
-    "version": "0.2.0",
+    "icon": "icon.png",
+    "version": "0.3.0",
     "publisher": "Entomy",
     "author": "Entomy",
     "galleryBanner": {
