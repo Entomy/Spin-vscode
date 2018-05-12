@@ -3,11 +3,11 @@
     "displayName": "Spin",
     "description": "Spin language support",
     "icon": "icon.png",
-    "version": "0.3.0",
+    "version": "0.2.0",
     "publisher": "Entomy",
     "author": "Entomy",
     "galleryBanner": {
-        "color": "#F0F000",
+        "color": "#003060",
         "theme": "dark"
     },
     "preview": true,

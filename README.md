@@ -2,7 +2,7 @@
 
 # About
 
-This extension provides support for Spin, an intepreted language for programmer the [Parallax Propeller](https://www.parallax.com/catalog/microcontrollers/propeller).
+This extension provides support for Spin, the primary language for programming the [Parallax Propeller](https://www.parallax.com/catalog/microcontrollers/propeller).
 
 # Help Me Out
 
