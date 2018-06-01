@@ -3,7 +3,7 @@
     "displayName": "Spin",
     "description": "Spin language support",
     "icon": "icon.png",
-    "version": "0.2.0",
+    "version": "0.4.0",
     "publisher": "Entomy",
     "author": "Entomy",
     "galleryBanner": {
@@ -29,7 +29,7 @@
         "vscode": "^1.19.0"
     },
     "categories": [
-        "Languages"
+        "Programming Languages"
     ],
     "contributes": {
         "grammars": [
