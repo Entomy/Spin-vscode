@@ -30,6 +30,10 @@
 				{ "include": "#line_comment" }
 			]
 		},
+		"constant": {
+			"name": "constant.language.spin",
+			"match": "(?i)\\b(TRUE|FALSE|POSX|NEGX|PI)\\b"
+		},
 		"constant_block": {
 			"name": "meta.block.constant.spin",
 			"begin": "(?i)^CON\\b",
