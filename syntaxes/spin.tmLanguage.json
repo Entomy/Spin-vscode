@@ -3,214 +3,110 @@
 	"name": "Spin",
 	"patterns": [
 		{ "include": "#comment" },
-		{ "include": "#block" },
-		{ "include": "#configuration" },
-		{ "include": "#constant" },
-		{ "include": "#control" },
-		{ "include": "#directive" },
-		{ "include": "#memory" },
-		{ "include": "#operator" },
-		{ "include": "#register" },
-		{ "include": "#value" }
+		{ "include": "#block" }
 	],
 	"repository": {
 		"block": {
+			"name": "meta.block.spin",
 			"patterns": [
-				{
-					"name": "meta.block.con.spin",
-					"match": "(?i)^CON\\b",
-					"captures": {
-						"0": {
-							"patterns": [
-								{
-									"name": "keyword.spin",
-									"match": "(?i)CON"
-								}
-							]
-						}
-					}
-				},
-				{
-					"name": "meta.block.var.spin",
-					"match": "(?i)^VAR\\b",
-					"captures": {
-						"0": {
-							"patterns": [
-								{
-									"name": "keyword.spin",
-									"match": "(?i)VAR"
-								}
-							]
-						}
-					}
-				},
-				{
-					"name": "meta.block.obj.spin",
-					"match": "(?i)^OBJ\\b",
-					"captures": {
-						"0": {
-							"patterns": [
-								{
-									"name": "keyword.spin",
-									"match": "(?i)OBJ"
-								}
-							]
-						}
-					}
-				},
-				{
-					"name": "meta.block.pub.spin",
-					"match": "(?i)^PUB\\b",
-					"captures": {
-						"0": {
-							"patterns": [
-								{
-									"name": "keyword.spin",
-									"match": "(?i)PUB"
-								}
-							]
-						}
-					}
-				},
-				{
-					"name": "meta.block.pri.spin",
-					"match": "(?i)^PRI\\b",
-					"captures": {
-						"0": {
-							"patterns": [
-								{
-									"name": "keyword.spin",
-									"match": "(?i)PRI"
-								}
-							]
-						}
-					}
-				},
-				{
-					"name": "meta.block.dat.spin",
-					"match": "(?i)^DAT\\b",
-					"captures": {
-						"0": {
-							"patterns": [
-								{
-									"name": "keyword.spin",
-									"match": "(?i)DAT"
-								}
-							]
-						}
-					}
-				},
-				{
-					"name": "invalid.illegal.spin",
-					"match": "(?i)^\\s+(CON|VAR|OBJ|PUB|PRI|DAT)\\b"
-				}
+				{ "include": "#constant_block" },
+				{ "include": "#variable_block" },
+				{ "include": "#object_block" },
+				{ "include": "#public_block" },
+				{ "include": "#private_block" },
+				{ "include": "#data_block" }
 			]
+		},
+		"block_comment": {
+			"name": "comment.block.spin",
+			"begin": "{",
+			"end": "}"
 		},
 		"comment": {
 			"patterns": [
-				{
-					"name": "comment.block.documentation.spin",
-					"match": "''.*"
-				},
-				{
-					"name": "comment.line.spin",
-					"match": "'.*"
-				},
-				{
-					"name": "comment.block.documentation.spin",
-					"begin": "{{",
-					"end": "}}"
-				},
-				{
-					"name": "comment.block.spin",
-					"begin": "{",
-					"end": "}"
-				}
+				{ "include": "#doc_block_comment" },
+				{ "include": "#block_comment" },
+				{ "include": "#doc_line_comment" },
+				{ "include": "#line_comment" }
 			]
 		},
-		"configuration": {
+		"constant_block": {
+			"name": "meta.block.constant.spin",
+			"begin": "(?i)^CON\\b",
+			"end": "(?i)^(?=(CON|VAR|OBJ|PUB|PRI|DAT))\\b",
+			"beginCaptures": {
+				"0": { "name": "keyword.con.spin" }
+			},
 			"patterns": [
-				{
-					"name": "keyword.other.configuration.spin",
-					"match": "(?i)\\b(CHIPVER|CLKMODE|_CLKMODE|CLKFREQ|_CLKFREQ|CLKSET|_XINFREQ|_STACK|_FREE|RCFAST|RCSLOW|XINPUT|XTAL1|XTAL2|XTAL3|PLL(1|2|4|8|16)X)\\b"
-				}
+				{ "include": "#comment" }
 			]
 		},
-		"constant": {
+		"data_block": {
+			"name": "meta.block.data.spin",
+			"begin": "(?i)^DAT\\b",
+			"end": "(?i)^(?=(CON|VAR|OBJ|PUB|PRI|DAT))\\b",
+			"beginCaptures": {
+				"0": { "name": "keyword.dat.spin" }
+			},
 			"patterns": [
-				{
-					"name": "constant.language.spin",
-					"match": "(?i)\\b(TRUE|FALSE|POSX|NEGX|PI)\\b"
-				}
+				{ "include": "#comment" }
 			]
 		},
-		"control": {
+		"doc_block_comment": {
+			"name": "comment.block.documentation.spin",
+			"begin": "{{",
+			"end": "}}"
+		},
+		"doc_line_comment": {
+			"name": "comment.block.documentation.spin",
+			"match": "''.*$"
+		},
+		"line_comment": {
+			"name": "comment.line.spin",
+			"match": "'.*$"
+		},
+		"object_block": {
+			"name": "meta.block.object.spin",
+			"begin": "(?i)^OBJ\\b",
+			"end": "(?i)^(?=(CON|VAR|OBJ|PUB|PRI|DAT))\\b",
+			"beginCaptures": {
+				"0": { "name": "keyword.obj.spin" }
+			},
 			"patterns": [
-				{
-					"name": "keyword.control.cog.spin",
-					"match": "(?i)\\b(COGID|COGNEW|COGINIT|COPGSTOP|REBOOT)\\b"
-				},
-				{
-					"name": "keyword.control.process.spin",
-					"match": "(?i)\\b(LOCKNEW|LOCKRET|LOCKCLR|LOCKSET|WAITCNT|WAITPEQ|WAITPNE|WAITVID)\\b"
-				},
-				{
-					"name": "keyword.control.flow.spin",
-					"match": "(?i)\\b(IF|ELSEIF|ELSEIFNOT|ELSE|IFNOT|CASE|OTHER|REPEAT|FROM|TO|STEP|UNIT|WHILE|NEXT|QUIT|RETURN|ABORT)\\b"
-				}
+				{ "include": "#comment" }
 			]
 		},
-		"directive": {
+		"private_block": {
+			"name": "meta.block.private.spin",
+			"begin": "(?i)^PRI\\b",
+			"end": "(?i)^(?=(CON|VAR|OBJ|PUB|PRI|DAT))\\b",
+			"beginCaptures": {
+				"0": { "name": "keyword.pri.spin" }
+			},
 			"patterns": [
-				{
-					"name": "keyword.control.directive.spin",
-					"match": "(?i)\\b(STRING|CONSTANT|FLOAT|ROUND|TRUNC|FILE)\\b"
-				}
+				{ "include": "#comment" }
 			]
 		},
-		"memory": {
+		"public_block": {
+			"name": "meta.block.public.spin",
+			"begin": "(?i)^PUB\\b",
+			"end": "(?i)^(?=(CON|VAR|OBJ|PUB|PRI|DAT))\\b",
+			"beginCaptures": {
+				"0": { "name": "keyword.pub.spin" }
+			},
 			"patterns": [
-				{
-					"name": "storage.type.spin",
-					"match": "(?i)\\b(BYTE|WORD|LONG)\\b"
-				}
+				{ "include": "#comment" }
 			]
 		},
-		"operator": {
+		"variable_block": {
+			"name": "meta.block.variable.spin",
+			"begin": "(?i)^VAR\\b",
+			"end": "(?i)^(?=(CON|VAR|OBJ|PUB|PRI|DAT))\\b",
+			"beginCaptures": {
+				"0": { "name": "keyword.var.spin" }
+			},
 			"patterns": [
-				{
-					"name": "keyword.operator.binary.spin",
-					"match": "(?i)(=|:=|\\+=?|\\-=?|\\*\\*?=?|//?=?|#>=?|<#=?|~>=?|<<=?|>>=?|<-=?|->=?|><=?|\\&=?)"
-				},
-				{
-					"name": "keyword.operator.unary.spin",
-					"match": "(?i)(\\+\\+?|\\-\\-?|\\^\\^|\\|\\||~~?|\\?|\\|<|>\\||!|NOT|@@?)"
-				}
-			]
-		},
-		"register": {
-			"patterns": [
-				{
-					"name": "variable.language.spin",
-					"match": "(?i)\\b(DIR(A|B)|IN(A|B)|OUT(A|B)|CNT|CTR(A|B)|FRQ(A|B)|PHS(A|B)|VCFG|VSCL|PAR|SPR)\\b"
-				}
-			]
-		},
-		"value": {
-			"patterns": [
-				{
-					"name": "string.quoted.double.spin",
-					"begin": "\"",
-					"end": "\""
-				},
-				{
-					"name": "constant.numeric.decimal.spin",
-					"match": "[0-9_]+"
-				},
-				{
-					"name": "constant.numeric.hexadecimal.spin",
-					"match": "\\$[0-9A-F_]+"
-				}
+				{ "include": "#comment" }
 			]
 		}
 	},
