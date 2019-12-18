@@ -38,6 +38,10 @@
 			"begin": "{",
 			"end": "}"
 		},
+		"cog": {
+			"name": "keyword.control.cog.spin",
+			"match": "(?i)\\b(COG(ID|NEW|INIT|STOP)|REBOOT)\\b"
+		},
 		"comment": {
 			"patterns": [
 				{ "include": "#doc_block_comment" },
@@ -45,6 +49,10 @@
 				{ "include": "#doc_line_comment" },
 				{ "include": "#line_comment" }
 			]
+		},
+		"configuration": {
+			"name": "keyword.control.configuration.spin",
+			"match": "(?i)\\b(CHIPVER|_?CLKMODE|_?CLKFREQ|CLKSET|_XINFREQ|_STACK|_FREE|RCFAST|RCSLOW|XINPUT|XTAL[1-3]|PLL(1|2|4|8|16)X)\\b"
 		},
 		"constant": {
 			"name": "constant.language.spin",
@@ -140,6 +148,10 @@
 			"name": "constant.numeric.decimal.spin",
 			"match": "\\d+"
 		},
+		"directives": {
+			"name": "keyword.control.directive.spin",
+			"match": "(?i)\\b(STRING|CONSTANT|FLOAT|ROUND|TRUNC|FILE)\\b"
+		},
 		"doc_block_comment": {
 			"name": "comment.block.documentation.spin",
 			"begin": "{{",
@@ -159,6 +171,10 @@
 		"line_comment": {
 			"name": "comment.line.spin",
 			"match": "'.*$"
+		},
+		"memory": {
+			"name": "keyword.control.memory.spin",
+			"match": "(?i)\\b((BYTE|WORD|LONG)(FILL|MOVE)?|LOOK(UPZ?|DOWNZ?)|STR(SIZE|CMP))\\b"
 		},
 		"number": {
 			"patterns": [
@@ -190,6 +206,10 @@
 				}
 			]
 		},
+		"operator": {
+			"name": "keyword.operator.spin",
+			"match": "(?i)(\\+(\\+|=)?|-(-|=)?|\\^(\\^|=)?|\\|(\\||=)?|~(~|>)?=?|\\?|\\|<|>\\||!|NOT|@@?|:?=|\\*(\\*|=)?|/(/|=)?|#>=?|<#=?|<<?=?|>>?=?|<-=?|->=?|><=?|&=|AND=?|OR=?|===?|<>=?|=[<>]=?)"
+		},
 		"private_block": {
 			"name": "meta.block.private.spin",
 			"begin": "(?i)^PRI\\b",
@@ -198,19 +218,44 @@
 				"0": { "name": "keyword.pri.spin" }
 			},
 			"patterns": [
-				{ "include": "#comment" }
+				{ "include": "#comment" },
+				{ "include": "#constant" },
+				{ "include": "#directives" },
+				{ "include": "#array_index" },
+				{ "include": "#number" },
+				{ "include": "#configuration" },
+				{ "include": "#cog" },
+				{ "include": "#memory" },
+				{ "include": "#operator" },
+				{ "include": "#register" },
+				{ "include": "#return" }
 			]
 		},
 		"public_block": {
 			"name": "meta.block.public.spin",
-			"begin": "(?i)^PUB\\b",
+			"begin": "(?i)^(PUB)(?:\\s+((?:\\w|\\d)+)(?:(\\()(.*)(\\)))?\\s*(?:(\\|)\\s*((\\w|_)+))?)?",
 			"end": "(?i)^(?=(CON|VAR|OBJ|PUB|PRI|DAT))\\b",
 			"beginCaptures": {
-				"0": { "name": "keyword.pub.spin" }
+				"1": { "name": "keyword.pub.spin" },
+				"2": { "name": "entity.name.function.spin" },
+				"3": { "name": "punctuation.spin" },
+				"4": { "name": "meta.parameter.spin" },
+				"5": { "name": "punctuation.spin" },
+				"6": { "name": "punctuation.spin" },
+				"7": { "name": "meta.return-type.spin" }
 			},
 			"patterns": [
 				{ "include": "#comment" },
-				{ "include": "#number" }
+				{ "include": "#constant" },
+				{ "include": "#directives" },
+				{ "include": "#array_index" },
+				{ "include": "#number" },
+				{ "include": "#configuration" },
+				{ "include": "#cog" },
+				{ "include": "#memory" },
+				{ "include": "#operator" },
+				{ "include": "#register" },
+				{ "include": "#return" }
 			]
 		},
 		"quaternary_number": {
@@ -223,6 +268,10 @@
 		"register": {
 			"name": "variable.language.register.spin",
 			"match": "(?i)\\b(DIR[AB]|IN[AB]|OUT[AB]|CNT|CTR[AB]|FRQ[AB]|PHS[AB]|VCFG|VSCL|PAR)\\b"
+		},
+		"return": {
+			"name": "variable.language.return.spin",
+			"match": "(?i)\\breturn\\b"
 		},
 		"string": {
 			"name": "string.quoted.double.spin",
